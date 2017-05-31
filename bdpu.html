@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BD谱</title>
+</head>
+<textarea name="putext" id="putext" cols="30" rows="20">2 ~ 7 ~ | 6 3 | 2 4 6 | 4 5 ~ | 2 2 7 7 6 6 3 2 4 6 ~ 7 5 | 2 2 7 7 6 7 1. 3 5 3. 2. 2. ~ | 7 7 7 6 5 3 3 | 2 2 4 3 2 5</textarea>
+<textarea name="output" id="output" cols="50" rows="20" spellcheck="false"></textarea>
+<br>
+<button id="submit">Convert!</button>
+<body>
+	
+	<script>
+		var puText = document.getElementById('putext');
+		var outPut = document.getElementById('output');
+		var text = puText.value;
+		var pu = text.split(" ");
+		var newpuarr = [" "];
+		var newpustr = "";
+		for(var i=0; i<pu.length; i++){
+			switch(pu[i]){
+				case "1":
+					newpuarr.push("4B");
+					break;
+				case "2":
+					newpuarr.push("4D");
+					break;
+				case "3":
+					newpuarr.push("5B");
+					break;
+				case "4":
+					newpuarr.push("5D");
+					break;
+				case "5":
+					newpuarr.push("6B");
+					break;
+				case "6":
+					newpuarr.push("6D");
+					break;
+				case "7":
+					newpuarr.push("7D");
+					break;
+				case "1.":
+					newpuarr.push("7B");
+					break;
+				case "2.":
+					newpuarr.push("8D");
+					break;
+				case "3.":
+					newpuarr.push("8B");
+					break;
+				case "~":
+					newpuarr.push("~");
+					break;
+				case "|":
+					newpuarr.push("\r");
+					break;
+			}
+		}
+		newpustr = newpuarr.join(' ');
+		console.log(newpustr);
+		btnSubmit = document.getElementById('submit');
+		btnSubmit.addEventListener('click',function(){
+			output.value = newpustr;
+		})
+	</script>
+</body>
+</html>
